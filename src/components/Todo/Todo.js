@@ -1,17 +1,18 @@
-import React from "react";
-import uuidv4 from "uuid/v4";
+import React, {Component} from "react";
+import {v4 as uuidv4} from 'uuid';
+import List from "./List";
 import './Todo.css';
 
-class Todo extends React.Component {
-    constructor(props) {
-        super(props);
+class Todo extends Component {
+    constructor() {
+        super();
         this.state = {
             task: '',
             items: []
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState({
             items: [
                 {
@@ -50,7 +51,7 @@ class Todo extends React.Component {
                     {
                         id: uuidv4(),
                         task: this.state.task,
-                        completed: false
+                        complete: false
                     }
                 ]
             });
@@ -73,9 +74,9 @@ class Todo extends React.Component {
     }
 
     removeTask = id => {
-        const filteredTask = this.state.items.filter(task => task.id !== id);
+        const filteredTasks = this.state.items.filter(task => task.id !== id);
         this.setState({
-            items: filteredTask
+            items: filteredTasks
         });
     }
 
@@ -86,7 +87,10 @@ class Todo extends React.Component {
                 <h1>New Task:</h1>
 
                 <form onSubmit={this.handleOnSubmit}>
-                    <input value={this.state.task} onChange={this.handleOnChange}/>
+                    <input
+                        value={this.state.task}
+                        onChange={this.handleOnChange}
+                    />
                 </form>
 
                 <List
