@@ -70,7 +70,13 @@ class Todo extends React.Component {
                 ...foundTask
             ]
         });
+    }
 
+    removeTask = id => {
+        const filteredTask = this.state.items.filter(task => task.id !== id);
+        this.setState({
+            items: filteredTask
+        });
     }
 
 
