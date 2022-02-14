@@ -1,9 +1,9 @@
-import Home from "../../../components/Home/Home";
+import Todo from "../../../components/Todo/Todo";
 
 const Content = () => {
     return (
         <main>
-            <Home/>
+            <Todo/>
         </main>
     )
 }
