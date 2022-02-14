@@ -58,7 +58,19 @@ class Todo extends React.Component {
     }
 
     markAsCompleted = id => {
-        
+        // find the task for id
+        const foundTask = this.state.items.find(task => task.id === id);
+        // update the task
+        foundTask.completed = true;
+
+        // update the state
+        this.setState({
+            items: [
+                ...this.state.items,
+                ...foundTask
+            ]
+        });
+
     }
 
 
